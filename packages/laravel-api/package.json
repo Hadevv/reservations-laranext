@@ -1,5 +1,6 @@
 {
     "name": "@mono/back",
+    "version": "1.0.0",
     "scripts": {
         "start": "php artisan serve"
     }
