@@ -8,18 +8,29 @@
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.2",
     "husky": "^9.0.11",
-    "lerna": "^8.1.2"
+    "lerna": "^8.1.2",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5"
   },
   "scripts": {
     "prepare": "husky",
+    "format": "prettier --write .",
     "dev:front": "lerna run dev --scope=@mono/front --stream",
     "dev:back": "lerna run start --scope=@mono/back --stream",
     "dev:all": "lerna run dev --stream",
     "start:all": "lerna run start --stream",
     "husky": {
       "hooks": {
-        "pre-commit": "bash pre-commit.sh"
+        "pre-commit": "lint-staged && .husky/pre-commit.sh"
       }
+    },
+    "lint-staged": {
+      "*.{js,jsx,ts,tsx}": [
+        "prettier --write"
+      ],
+      "*.{json,md}": [
+        "prettier --write"
+      ]
     }
   }
 }

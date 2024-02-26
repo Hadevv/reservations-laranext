@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"name": "✨ root",
+			"path": "."
+		},
+		{
+			"name": "🚀 @mono/back",
+			"path": "packages/laravel-api"
+		},
+		{
+			"name": "🚀 @mono/front",
+			"path": "packages/nextjs-frontend"
+		}
+	],
+	"settings": {
+		"files.exclude": {}
+	}
+}
