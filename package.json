@@ -19,6 +19,9 @@
     "dev:back": "lerna run start --scope=@mono/back --stream",
     "dev:all": "lerna run dev --stream",
     "start:all": "lerna run start --stream",
+    "start-day": "npm install && npm run start:back && npm run start:front",
+    "start:back": "npx lerna run dev:back --stream",
+    "start:front": "npx lerna run dev:front --stream",
     "husky": {
       "hooks": {
         "pre-commit": "lint-staged && .husky/pre-commit.sh"
