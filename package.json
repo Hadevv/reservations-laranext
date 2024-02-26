@@ -15,6 +15,11 @@
     "dev:front": "lerna run dev --scope=@mono/front --stream",
     "dev:back": "lerna run start --scope=@mono/back --stream",
     "dev:all": "lerna run dev --stream",
-    "start:all": "lerna run start --stream"
+    "start:all": "lerna run start --stream",
+    "husky": {
+      "hooks": {
+        "pre-commit": "bash pre-commit.sh"
+      }
+    }
   }
 }
