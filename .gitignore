@@ -13,3 +13,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+packages/nextjs-frontend/.next/
+/.next/
