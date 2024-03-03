@@ -12,6 +12,8 @@ import { useState } from 'react'
 
 const Navigation = ({ user }) => {
     const { logout } = useAuth()
+    const { deleteAccount } = useAuth()
+
 
     const [open, setOpen] = useState(false)
 
@@ -65,7 +67,7 @@ const Navigation = ({ user }) => {
                             <DropdownButton onClick={logout}>
                                 Logout
                             </DropdownButton>
-                            <DropdownButton>
+                            <DropdownButton onClick={deleteAccount}>
                                 Delete account
                             </DropdownButton>
                         </Dropdown>
@@ -148,6 +150,9 @@ const Navigation = ({ user }) => {
                             {/* Authentication */}
                             <ResponsiveNavButton onClick={logout}>
                                 Logout
+                            </ResponsiveNavButton>
+                            <ResponsiveNavButton onClick={() => deleteAccount(user.id)}>
+                                Delete account
                             </ResponsiveNavButton>
                         </div>
                     </div>

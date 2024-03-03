@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class DeleteUserController extends Controller
 {
-    public function destroy(User $user)
+    public function destroy(User $user): JsonResponse
     {
         //Vérification si l'utilisateur est authentifié
         if(Auth::id() !== $user->id){

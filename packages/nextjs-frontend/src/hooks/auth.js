@@ -110,23 +110,16 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (middleware === 'auth' && error) logout()
     }, [user, error])
 
-    const deleteAccount = async ({setErrors, setStatus }) =>{
+    const deleteAccount = async (userId) =>{
         await csrf();
 
-        setErrors([]);
-        setStatus(null);
-
         axios
-            .post('/delete')
+            .post(`/user/${userId}/delete`)
             .then(() => {
                 mutate() //mettre à jour les data user dans le cache
                 window.location.pathname = '/login' //rediriger l'user vers la page login
             })
-            .catch(error => {
-                if (error.response.status !== 422) throw error;
 
-                setErrors(error.response.data.errors);
-            });
     }
 
     return {
