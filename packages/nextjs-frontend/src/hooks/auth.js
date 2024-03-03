@@ -110,6 +110,18 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (middleware === 'auth' && error) logout()
     }, [user, error])
 
+    const deleteAccount = async (userId) =>{
+        await csrf();
+
+        axios
+            .post(`/user/${userId}/delete`)
+            .then(() => {
+                mutate() //mettre à jour les data user dans le cache
+                window.location.pathname = '/login' //rediriger l'user vers la page login
+            })
+
+    }
+
     return {
         user,
         register,
@@ -118,5 +130,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         resetPassword,
         resendEmailVerification,
         logout,
+        deleteAccount,
     }
 }
