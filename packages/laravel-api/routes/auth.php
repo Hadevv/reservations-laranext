@@ -35,3 +35,6 @@ Route::post('/email/verification-notification', [EmailVerificationNotificationCo
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+
+Route::post('/user/{user}/delete', [DeleteUserController::class, 'destroy'])
+    ->name('user.destroy');
