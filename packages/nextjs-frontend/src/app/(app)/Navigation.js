@@ -9,11 +9,11 @@ import { DropdownButton } from '@/components/DropdownLink'
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 const Navigation = ({ user }) => {
     const { logout } = useAuth()
     const { deleteAccount } = useAuth()
-
 
     const [open, setOpen] = useState(false)
 
@@ -67,7 +67,11 @@ const Navigation = ({ user }) => {
                             <DropdownButton onClick={logout}>
                                 Logout
                             </DropdownButton>
-                            <DropdownButton onClick={() => deleteAccount(user.id)}>
+                            <DropdownButton
+                                onClick={() => {
+                                    deleteAccount(user.id)
+                                    toast.success('Account deleted')
+                                }}>
                                 Delete account
                             </DropdownButton>
                         </Dropdown>
@@ -151,7 +155,11 @@ const Navigation = ({ user }) => {
                             <ResponsiveNavButton onClick={logout}>
                                 Logout
                             </ResponsiveNavButton>
-                            <ResponsiveNavButton onClick={() => deleteAccount(user.id)}>
+                            <ResponsiveNavButton
+                                onClick={() => {
+                                    deleteAccount(user.id)
+                                    toast.success('Account deleted')
+                                }}>
                                 Delete account
                             </ResponsiveNavButton>
                         </div>
