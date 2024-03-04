@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\DeleteUserController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
@@ -40,3 +41,7 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::post('/user/{user}/delete', [DeleteUserController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('user.destroy');
+
+Route::put('user/{user}/modify', [UserController::class, 'update'])
+                ->middleware('auth')
+                ->name('user.update');

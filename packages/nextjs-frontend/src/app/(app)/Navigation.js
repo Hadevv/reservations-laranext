@@ -74,6 +74,9 @@ const Navigation = ({ user }) => {
                                 }}>
                                 Delete account
                             </DropdownButton>
+                            <DropdownButton>
+                                Profil
+                            </DropdownButton>
                         </Dropdown>
                     </div>
 
@@ -161,6 +164,9 @@ const Navigation = ({ user }) => {
                                     toast.success('Account deleted')
                                 }}>
                                 Delete account
+                            </ResponsiveNavButton>
+                            <ResponsiveNavButton>
+                                Profil
                             </ResponsiveNavButton>
                         </div>
                     </div>
