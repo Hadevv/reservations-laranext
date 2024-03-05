@@ -20,7 +20,6 @@ return new class extends Migration
             $table->boolean('bookable');
             $table->decimal('price', 8, 2);
             $table->text('description');
-            $table->date('created_at')->nullable();
             $table->timestamps();
 
             $table->foreign('location_id')->references('id')->on('locations');
