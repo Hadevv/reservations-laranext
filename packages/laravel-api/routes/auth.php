@@ -45,3 +45,9 @@ Route::post('/user/{user}/delete', [DeleteUserController::class, 'destroy'])
 Route::put('user/{user}/modify', [UserController::class, 'update'])
                 ->middleware('auth')
                 ->name('user.update');
+
+Route::get('user/{user}/show', [UserController::class, 'show'])
+    ->middleware('auth')
+    ->name('user.show');
+
+

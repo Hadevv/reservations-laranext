@@ -1,7 +1,8 @@
 import useSWR from 'swr'
 import axios from '@/lib/axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
+
 
 export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const router = useRouter()
@@ -110,7 +111,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (middleware === 'auth' && error) logout()
     }, [user, error])
 
-    const deleteAccount = async (userId) =>{
+    const deleteAccount = async (userId) => {
         await csrf();
 
         axios
@@ -122,6 +123,20 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     }
 
+    const myAccount = async (userId) => {
+
+        await csrf();
+
+        return axios.get(`/user/${userId}/show`)
+            .then(response => {
+                router.push(`/profile?user=${userId}`); // Rediriger vers la page de profil
+                return response.data; // Renvoyer les données de l'utilisateur
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des données de profil', error);
+            });
+    };
+
     return {
         user,
         register,
@@ -131,5 +146,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         resendEmailVerification,
         logout,
         deleteAccount,
+        myAccount
     }
 }

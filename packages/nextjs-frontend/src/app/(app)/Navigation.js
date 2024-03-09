@@ -7,15 +7,18 @@ import ResponsiveNavLink, {
 } from '@/components/ResponsiveNavLink'
 import { DropdownButton } from '@/components/DropdownLink'
 import { useAuth } from '@/hooks/auth'
-import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { redirect, usePathname } from 'next/navigation'
 import { toast } from 'sonner'
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+
 
 const Navigation = ({ user }) => {
-    const { logout } = useAuth()
-    const { deleteAccount } = useAuth()
+    const { logout, deleteAccount, myAccount } = useAuth(); // Combinez les hooks useAuth en une seule ligne
 
-    const [open, setOpen] = useState(false)
+
+
+
 
     return (
         <nav className="bg-white border-b border-gray-100">
@@ -74,8 +77,8 @@ const Navigation = ({ user }) => {
                                 }}>
                                 Delete account
                             </DropdownButton>
-                            <DropdownButton>
-                                Profil
+                            <DropdownButton onClick={() => myAccount(user.id)}>
+                                Mon profil
                             </DropdownButton>
                         </Dropdown>
                     </div>
@@ -173,7 +176,13 @@ const Navigation = ({ user }) => {
                 </div>
             )}
         </nav>
+
+
     )
+
+
 }
+
+
 
 export default Navigation

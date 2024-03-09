@@ -41,4 +41,9 @@ class UserController extends Controller
 
         return response()->json(['message' => 'mise à jour des données réussie'], );
     }
+    public function show()
+    {
+        $user = Auth::user(); // Récupère l'utilisateur actuellement authentifié
+        return response()->json($user);
+    }
 }
