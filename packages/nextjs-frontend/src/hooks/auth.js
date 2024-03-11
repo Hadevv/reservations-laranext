@@ -137,6 +137,20 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             });
     };
 
+    const modifyAccount = async (userId, data) => {
+        await csrf();
+
+        return axios.put(`/user/${userId}/update`, data)
+            .then(response => {
+                mutate(response.data); // Mettre à jour les données de l'utilisateur dans le cache
+                return response.data; // Renvoyer les données de l'utilisateur
+            })
+            .catch(error => {
+                console.error('Erreur lors de la modification des données de profil', error);
+            });
+
+    }
+
     return {
         user,
         register,
