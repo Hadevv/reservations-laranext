@@ -143,6 +143,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         return axios.put(`/user/${userId}/update`, data)
             .then(response => {
                 mutate(response.data); // Mettre à jour les données de l'utilisateur dans le cache
+
                 return response.data; // Renvoyer les données de l'utilisateur
             })
             .catch(error => {
@@ -160,6 +161,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         resendEmailVerification,
         logout,
         deleteAccount,
-        myAccount
+        myAccount,
+        modifyAccount
     }
 }

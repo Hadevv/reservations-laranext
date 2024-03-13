@@ -168,8 +168,8 @@ const Navigation = ({ user }) => {
                                 }}>
                                 Delete account
                             </ResponsiveNavButton>
-                            <ResponsiveNavButton>
-                                Profil
+                            <ResponsiveNavButton onClick={() => myAccount(user.id)}>
+                                Mon profil
                             </ResponsiveNavButton>
                         </div>
                     </div>
